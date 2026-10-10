@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KhetFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="notice" id="notice" hidden>
+  <div class="wrap">Preview with sample products and prices.</div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="KhetFit home">
+      <span class="brand-mark" role="img" aria-label="KhetFit logo mark"></span>
+      <span class="brand-word">KHET<b>FIT</b></span>
+    </a>
+    <div class="header-actions">
+      <a class="nav-link" href="#shop">Shop</a>
+      <a class="nav-link" href="#how">How ordering works</a>
+      <button type="button" class="cart-btn" id="cart-btn" aria-label="Open cart, empty">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span>Cart</span>
+        <span class="count" id="cart-count" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Fuel your better self.</h1>
+        <p class="lede">Peanut butter, protein, supplements and healthy foods. Pick what you need, send your order on WhatsApp, and we confirm delivery with you.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#shop">Shop products</a>
+          <a class="btn btn-ghost" href="#how">How ordering works</a>
+        </div>
+      </div>
+      <div class="hero-art"><div class="mark" role="img" aria-label="KhetFit logo: a flexing figure shaped into the letter K beside a wheat leaf"></div></div>
+    </div>
+  </section>
+
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <h2 class="section-title">Products</h2>
+      <div class="toolbar">
+        <div class="tabs" id="tabs" role="group" aria-label="Product categories"></div>
+        <div class="controls">
+          <label class="sr-only" for="search">Search products</label>
+          <input class="field-input" id="search" type="search" placeholder="Search products" autocomplete="off">
+          <label class="sr-only" for="sort">Sort products</label>
+          <select class="field-select" id="sort">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden>
+        <strong id="empty-title">No products found</strong>
+        <span>Clear the search or pick another category.</span>
+        <button type="button" class="btn btn-ghost" id="reset-filters">Show all products</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <h2 class="section-title">How ordering works</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-no" aria-hidden="true">1</span>
+          <h3>Pick your products</h3>
+          <p>Add peanut butter, protein, supplements or healthy foods to your cart.</p>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">2</span>
+          <h3>Enter your delivery details</h3>
+          <p>Name, mobile number and address. Choose cash on delivery or UPI. Nothing is charged on this page.</p>
+        </li>
+        <li>
+          <span class="step-no" aria-hidden="true">3</span>
+          <h3>Send the order on WhatsApp</h3>
+          <p>Your order opens as a ready-made message. We reply to confirm delivery and payment.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <span class="brand-word">KHET<b>FIT</b></span>
+      <p>Fuel your better self.</p>
+      <p class="fine" id="footer-contact" hidden></p>
+    </div>
+    <nav class="footer-cats" aria-label="Product categories">
+      <strong>Shop by category</strong>
+      <a href="#shop" data-cat="peanut-butter">Peanut butter</a>
+      <a href="#shop" data-cat="protein">Protein</a>
+      <a href="#shop" data-cat="supplements">Supplements</a>
+      <a href="#shop" data-cat="healthy-foods">Healthy foods</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="drawer-back" aria-label="Back" hidden>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <h2 id="drawer-title">Your cart</h2>
+    <button type="button" class="icon-btn" id="drawer-close" aria-label="Close cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <section class="view" id="view-cart">
+    <div class="drawer-body" id="cart-body"></div>
+    <div class="drawer-foot" id="cart-foot">
+      <div class="row total"><span>Subtotal</span><strong id="cart-subtotal">₹0</strong></div>
+      <p class="fine">Delivery charges are confirmed when we reply to your order.</p>
+      <button type="button" class="btn btn-block" id="to-details">Enter delivery details</button>
+    </div>
+  </section>
+
+  <form class="view" id="view-details" novalidate hidden>
+    <div class="drawer-body">
+      <div class="form-grid">
+        <label for="f-name">Full name
+          <input id="f-name" name="name" type="text" autocomplete="name" aria-describedby="e-name">
+          <span class="err" id="e-name"></span>
+        </label>
+        <label for="f-phone">Mobile number
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="10-digit number" aria-describedby="e-phone">
+          <span class="err" id="e-phone"></span>
+        </label>
+        <label for="f-house">House or flat number
+          <input id="f-house" name="house" type="text" autocomplete="address-line1" aria-describedby="e-house">
+          <span class="err" id="e-house"></span>
+        </label>
+        <label for="f-area">Street and area
+          <input id="f-area" name="area" type="text" autocomplete="address-line2" aria-describedby="e-area">
+          <span class="err" id="e-area"></span>
+        </label>
+        <label for="f-landmark">Landmark <span class="opt">(optional)</span>
+          <input id="f-landmark" name="landmark" type="text" placeholder="School, temple or shop nearby">
+        </label>
+        <div class="pair">
+          <label for="f-city">City or town
+            <input id="f-city" name="city" type="text" autocomplete="address-level2" aria-describedby="e-city">
+            <span class="err" id="e-city"></span>
+          </label>
+          <label for="f-pin">PIN code
+            <input id="f-pin" name="pin" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="6" aria-describedby="e-pin">
+            <span class="err" id="e-pin"></span>
+          </label>
+        </div>
+        <label for="f-state">State
+          <select id="f-state" name="state" autocomplete="address-level1" aria-describedby="e-state"></select>
+          <span class="err" id="e-state"></span>
+        </label>
+        <fieldset class="pay">
+          <legend>Payment</legend>
+          <label class="choice" for="pay-cod">
+            <input id="pay-cod" name="payment" type="radio" value="cod" checked>
+            <span class="choice-text"><b>Cash on delivery</b><small>Pay when your order arrives.</small></span>
+          </label>
+          <label class="choice" for="pay-upi">
+            <input id="pay-upi" name="payment" type="radio" value="upi">
+            <span class="choice-text"><b>Pay by UPI</b><small>We send payment details on WhatsApp after you place the order.</small></span>
+          </label>
+        </fieldset>
+        <label for="f-notes">Notes <span class="opt">(optional)</span>
+          <textarea id="f-notes" name="notes" placeholder="Flavour preference, preferred delivery time"></textarea>
+        </label>
+        <label class="check" for="f-confirm">
+          <input id="f-confirm" name="confirm" type="checkbox" aria-describedby="e-confirm">
+          <span>I have checked that my address and mobile number are correct.</span>
+        </label>
+        <span class="err" id="e-confirm"></span>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="row total"><span id="details-summary">0 items</span><strong id="details-total">₹0</strong></div>
+      <button type="submit" class="btn btn-block">Review order</button>
+    </div>
+  </form>
+
+  <section class="view" id="view-ready" hidden>
+    <div class="drawer-body">
+      <div class="ready-head">
+        <strong>Check your order, then send it</strong>
+        <p id="ready-copy">Check that the address is correct, then open WhatsApp to send this message to KhetFit.</p>
+      </div>
+      <pre class="order-text" id="order-text"></pre>
+    </div>
+    <div class="drawer-foot">
+      <a class="btn btn-block" id="wa-link" href="#" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+      <button type="button" class="btn btn-ghost btn-block" id="copy-order">Copy order</button>
+      <button type="button" class="btn btn-ghost btn-block" id="edit-details">Edit delivery details</button>
+      <button type="button" class="link-btn" id="clear-cart">I have sent it, clear my cart</button>
+    </div>
+  </section>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
